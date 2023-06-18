@@ -45,13 +45,15 @@ export const addMember = async (userData: TelegramUserData) => {
   const docSnap = await getDoc(userRef)
 
   if (!docSnap.exists()) {
-    await setDoc(doc(db, 'members'), {
+    await setDoc(userRef, {
       id: userData.id,
       first_name: userData.first_name,
       last_name: userData.last_name,
       username: userData.username,
       photo_url: userData.photo_url,
-      isAdmin: false
+      isAdmin: false,
+      bio: '',
+      email: ''
     })
   }
 }
