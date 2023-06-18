@@ -10,15 +10,17 @@ import {
 } from 'firebase/firestore'
 import type { TelegramUserData } from './stores/auth'
 
-export const firebaseApp = initializeApp({
-  apiKey: 'AIzaSyApOlqInjxEOx_P9tYn0pN7AILOZ4k9jqk',
-  authDomain: 'unity-e3225.firebaseapp.com',
-  projectId: 'unity-e3225',
-  storageBucket: 'unity-e3225.appspot.com',
-  messagingSenderId: '66171096635',
-  appId: '1:66171096635:web:4ab39fed44b892dc33961e',
-  measurementId: 'G-LLPEYCDCSV'
-})
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSANGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+}
+
+export const firebaseApp = initializeApp(firebaseConfig)
 
 const db = getFirestore(firebaseApp)
 
@@ -47,10 +49,10 @@ export const addMember = async (userData: TelegramUserData) => {
   if (!docSnap.exists()) {
     await setDoc(userRef, {
       id: userData.id,
-      first_name: userData.first_name,
-      last_name: userData.last_name,
+      first_name: userData.first_name ? userData.first_name : '',
+      last_name: userData.last_name ? userData.last_name : '',
       username: userData.username,
-      photo_url: userData.photo_url,
+      photo_url: userData.photo_url ? userData.photo_url : '',
       isAdmin: false,
       bio: '',
       email: ''

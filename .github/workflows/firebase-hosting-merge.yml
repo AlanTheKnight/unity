@@ -26,6 +26,13 @@ jobs:
           echo VITE_APP_TELEGRAM_BOT_TOKEN=${{ secrets.VITE_APP_TELEGRAM_BOT_TOKEN }} >> .env.production
           echo VITE_APP_TELEGRAM_BOT_NAME=${{ secrets.VITE_APP_TELEGRAM_BOT_NAME }} >> .env.production
           echo VITE_APP_UNITY_JOIN_LINK=${{ secrets.VITE_APP_UNITY_JOIN_LINK }} >> .env.production
+          echo VITE_FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }} >> .env.production
+          echo VITE_FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }} >> .env.production
+          echo VITE_FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }} >> .env.production
+          echo VITE_FIREBASE_STORAGE_BUCKET=${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }} >> .env.production
+          echo VITE_FIREBASE_MESSANGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSANGING_SENDER_ID }} >> .env.production
+          echo VITE_FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }} >> .env.production
+          echo VITE_FIREBASE_MEASUREMENT_ID=${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }} >> .env.production
 
       - name: Build ⚙️
         run: npm run build
@@ -33,6 +40,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_UNITY_E3225 }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_UNITY_TG }}"
           channelId: live
-          projectId: unity-e3225
+          projectId: unity-tg
