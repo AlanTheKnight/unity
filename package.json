@@ -21,6 +21,7 @@
     "crypto-js": "^4.1.1",
     "dompurify": "^3.0.3",
     "firebase": "^9.22.2",
+    "jdenticon": "^3.2.0",
     "marked": "^5.1.0",
     "marked-mangle": "^1.0.1",
     "pinia": "^2.1.3",

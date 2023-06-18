@@ -2,17 +2,16 @@ import { checkAuthValidity } from '@/utils/auth'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import router from '@/router'
-import { addMember, membersRef } from '@/firebase'
-import { doc } from 'firebase/firestore'
+import { addMember } from '@/firebase'
 
 export interface TelegramUserData {
   auth_date: number
   first_name: string
   hash: string
   id: number
-  last_name: string
+  last_name?: string
   username: string
-  photo_url: string
+  photo_url?: string
 }
 
 const readLocalUserData = (): TelegramUserData | null => {

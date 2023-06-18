@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Member } from '@/firebase'
 import { useAuthStore } from '@/stores/auth'
+import UserIcon from './UserIcon.vue'
 
 const authStore = useAuthStore()
 
@@ -8,13 +9,13 @@ defineProps<{ member: Member }>()
 </script>
 
 <template>
-  <div class="col-12 col-xl-6">
+  <div class="col-12 col-xl-6 mb-3">
     <div class="card card-body">
       <div class="row">
         <div
           class="col-12 col-md-auto mb-4 mb-md-0 d-flex justify-content-center justify-content-md-start"
         >
-          <img :src="member.photo_url" alt="" class="user-avatar" />
+          <UserIcon :user="member" size="100" radius="20" />
         </div>
         <div class="col">
           <div class="fs-5 position-absolute top-0 end-0 mt-2 me-2 d-flex flex-column flex-md-row">
