@@ -18,6 +18,6 @@ export const checkAuthValidity = (data: TelegramUserData) => {
 
   const delta = new Date().getTime() - new Date(data.auth_date * 1000).getTime()
 
-  if (check_hash === data.hash && delta <= 10080000) return true
+  if (check_hash === data.hash && delta <= 604800000) return true
   return false
 }
