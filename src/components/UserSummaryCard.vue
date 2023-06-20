@@ -10,11 +10,9 @@ defineProps<{ member: Member }>()
 
 <template>
   <div class="col-12 col-xl-6 mb-3">
-    <div class="card card-body">
-      <div class="row">
-        <div
-          class="col-12 col-md-auto mb-4 mb-md-0 d-flex justify-content-center justify-content-md-start"
-        >
+    <div class="card card-body h-100">
+      <div class="row h-100">
+        <div class="col-12 col-md-auto mb-4 mb-md-0 d-flex justify-content-center justify-content-md-start align-items-center">
           <UserIcon :user="member" size="100px" />
         </div>
         <div class="col">
@@ -28,6 +26,14 @@ defineProps<{ member: Member }>()
             <a class="link-light text-decoration-none" :href="'https://t.me/' + member.username"
               >@{{ member.username }}</a
             >
+          </div>
+          <div v-if="member.birthday" class="">
+            <i class="bi-balloon-fill text-secondary me-2"></i>
+            <span class="link-light text-decoration-none">{{ new Date(member.birthday).toLocaleDateString() }}</span>
+          </div>
+          <div v-if="member.education" class="">
+            <i class="bi-building-fill text-secondary me-2"></i>
+            <span class="link-light text-decoration-none">{{ member.education }}</span>
           </div>
         </div>
       </div>

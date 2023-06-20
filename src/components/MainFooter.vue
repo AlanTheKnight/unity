@@ -3,30 +3,26 @@
     <hr />
 
     <div class="container pb-2 px-4">
-      <div class="row">
-        <div class="col-6 col-md-auto order-1 order-md-0">
-          <div class="d-flex flex-row align-items-center" id="diaryx-info">
-            <img
-              src="@/assets/images/logo/logo.png"
-              width="20"
-              height="20"
-              class="d-inline-block align-center me-2"
-              alt=""
-            />
-            <div class="fw-bold me-2">Unity</div>
-            <div id="version">v{{ version }}</div>
-          </div>
+      <div class="d-flex flex-row align-items-center">
+        <img
+          src="@/assets/images/logo/logo.png"
+          width="20"
+          height="20"
+          class="d-inline-block align-center me-2"
+          alt=""
+        />
+        <div class="fw-bold me-2">Unity</div>
+        <div id="version">v{{ version }}</div>
+      </div>
 
-          <div>
-            Coding by
-            <a
-              class="fw-bold link-light text-decoration-none"
-              href="https://github.com/AlanTheKnight"
-              target="_blank"
-              >Maxim Gusev</a
-            >
-          </div>
-        </div>
+      <div>
+        Coding by
+        <a
+          class="fw-bold link-light text-decoration-none"
+          href="https://github.com/AlanTheKnight"
+          target="_blank"
+          >Maxim Gusev</a
+        >
       </div>
     </div>
   </footer>
@@ -50,9 +46,5 @@ const route = useRoute()
 
 #version {
   white-space: nowrap;
-}
-
-#diaryx-info {
-  flex-wrap: wrap;
 }
 </style>
