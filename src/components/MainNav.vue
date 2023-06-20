@@ -21,10 +21,16 @@ const authStore = useAuthStore()
         <div class="dropdown">
           <div data-bs-toggle="dropdown" class="d-flex flex-row align-items-center">
             <div class="me-2 fw-bold">{{ authStore.user.username }}</div>
-            <UserIcon :user="authStore.user" size="40" radius="30" />
+            <UserIcon :user="authStore.user" size="40px" />
           </div>
 
           <ul class="dropdown-menu">
+            <li>
+              <RouterLink class="dropdown-item" to="/profile">
+                <i class="bi-person me-2"></i>
+                <span>My profile</span>
+              </RouterLink>
+            </li>
             <li>
               <a class="dropdown-item" href="#" @click.prevent="authStore.logout">
                 <i class="bi-box-arrow-right me-2"></i>
@@ -38,7 +44,7 @@ const authStore = useAuthStore()
   </nav>
 </template>
 
-<style local>
+<style scoped>
 #mainNavbar {
   background-color: #161c23;
 }
@@ -48,9 +54,7 @@ const authStore = useAuthStore()
   text-align: center;
 }
 
-#userProfilePhoto {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.userAvatar {
+  border-radius: 20%;
 }
 </style>

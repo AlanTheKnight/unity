@@ -11,3 +11,5 @@ interface ImportMetaEnv {
   VITE_FIREBASE_APP_ID: string
   VITE_FIREBASE_MEASUREMENT_ID: string
 }
+
+declare const __APP_VERSION__: string

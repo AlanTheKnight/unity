@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import NoAccess from '../views/NoAccess.vue'
 import MembersView from '../views/MembersView.vue'
+import ProfileView from '../views/ProfileView.vue'
 
 import { useAuthStore } from '@/stores/auth'
 
@@ -22,6 +23,11 @@ const router = createRouter({
       path: '/members',
       name: 'members',
       component: MembersView
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: ProfileView
     }
   ]
 })

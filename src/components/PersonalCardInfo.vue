@@ -5,7 +5,7 @@
     <div class="display-3 bi bi-person-fill"></div>
     <div class="text-muted">
       <div>My profile</div>
-      <RouterLink to="/" class="display-none stretched-link"></RouterLink>
+      <RouterLink to="/profile" class="display-none stretched-link"></RouterLink>
     </div>
   </div>
 </template>

@@ -15,7 +15,7 @@ defineProps<{ member: Member }>()
         <div
           class="col-12 col-md-auto mb-4 mb-md-0 d-flex justify-content-center justify-content-md-start"
         >
-          <UserIcon :user="member" size="100" radius="20" />
+          <UserIcon :user="member" size="100px" />
         </div>
         <div class="col">
           <div class="fs-5 position-absolute top-0 end-0 mt-2 me-2 d-flex flex-column flex-md-row">
@@ -41,9 +41,7 @@ defineProps<{ member: Member }>()
   transition: scale 0.1s ease-in-out;
 }
 
-.user-avatar {
-  width: 100px;
-  height: 100px;
+.userAvatar {
   border-radius: 20%;
 }
 

@@ -4,7 +4,7 @@ import type { TelegramUserData } from '@/stores/auth'
 import { toSvg } from 'jdenticon'
 import { computed } from 'vue'
 
-const props = defineProps<{ size: string; user: Member | TelegramUserData; radius: string }>()
+const props = defineProps<{ size: string; user: Member | TelegramUserData }>()
 
 const jdenticon = computed(() => {
   if (props.user.photo_url) return null
@@ -13,21 +13,14 @@ const jdenticon = computed(() => {
 </script>
 
 <template>
-  <div>
-    <img
-      v-if="user.photo_url"
-      :src="user.photo_url"
-      alt=""
-      class="userAvatar"
-      :style="{ width: `${size}px`, height: `${size}px`, borderRadius: `${radius}%` }"
-    />
-    <div
-      v-else
-      v-html="jdenticon"
-      class="userAvatar jdenticon-wrapper"
-      :style="{ borderRadius: `${radius}%` }"
-    ></div>
-  </div>
+  <img
+    v-if="user.photo_url"
+    :src="user.photo_url"
+    alt=""
+    class="userAvatar"
+    :style="{ width: `${size}`, height: `${size}` }"
+  />
+  <div v-else v-html="jdenticon" class="userAvatar jdenticon-wrapper"></div>
 </template>
 
 <style scoped>
