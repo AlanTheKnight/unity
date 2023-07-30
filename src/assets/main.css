@@ -42,6 +42,10 @@ html {
   --bs-secondary-color: rgba(255, 255, 255, 0.645);
 }
 
+.modal-backdrop {
+  opacity: 0.9 !important;
+}
+
 .nav {
   --bs-nav-link-color: rgba(255, 255, 255, 0.645);
   --bs-nav-pills-link-active-bg: #161c23;

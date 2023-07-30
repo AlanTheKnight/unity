@@ -35,11 +35,12 @@ const cols = props.size.split('x')[0]
 const rows = props.size.split('x')[1]
 
 onMounted(() => {
-  if (mdeRef.value)
+  if (mdeRef.value) {
     easyMDE.value = new EasyMDE({
       element: mdeRef.value as HTMLElement,
       ...props.options
     })
+  }
 })
 
 const getValue = () => {
@@ -93,24 +94,25 @@ defineExpose({
 }
 
 .EasyMDEContainer {
-    background-color: #161c23 !important;
+  background-color: #161c23 !important;
 }
 
-.CodeMirror, .editor-preview {
-    color: white !important;
-    border-color: gray !important;
-    background-color: #161c23 !important;
+.CodeMirror,
+.editor-preview {
+  color: white !important;
+  border-color: gray !important;
+  background-color: #161c23 !important;
 }
 
 .cm-s-easymde .CodeMirror-cursor {
-    border-color: rgb(255, 255, 255) !important;
+  border-color: rgb(255, 255, 255) !important;
 }
 
 .editor-toolbar button i {
-    color: white !important;
+  color: white !important;
 }
 
 .editor-preview pre {
-    background-color: #333 !important;
+  background-color: #333 !important;
 }
 </style>

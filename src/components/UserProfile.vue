@@ -17,12 +17,14 @@ const user = useDocument(userRef)
 
 const userData = ref<null | UserProfileFormData>(null)
 
+const bioInput = ref<typeof MarkDownEditor | null>(null)
+
 onMounted(async () => {
   const rawUser = await getDoc(userRef)
   userData.value = getUserProfileFormFields(rawUser.data())
 })
 
-const bioInput = ref<typeof MarkDownEditor | null>(null)
+const profileIsLoading = ref(false)
 
 const saveUserProfile = (data: UserProfileFormData) => {
   const bioVal = bioInput.value?.getValue() as string | undefined
@@ -34,7 +36,10 @@ const saveUserProfile = (data: UserProfileFormData) => {
     first_name: data.first_name
   }
 
-  updateUser(userRef, newData)
+  profileIsLoading.value = true
+  updateUser(userRef, newData).then(() => {
+    profileIsLoading.value = false
+  })
 }
 </script>
 
@@ -58,42 +63,55 @@ const saveUserProfile = (data: UserProfileFormData) => {
           <i class="bi bi-exclamation-circle me-3"></i>Your username and avatar update automatically after login
         </div>
 
-        <FormKit v-if="userData !== null" type="form" submit-label="Save" :value="userData" @submit="saveUserProfile">
-          <div class="row">
-            <div class="col-12 col-md-6">
-              <FormKit
-                type="text"
-                name="first_name"
-                outer-class="mb-3"
-                label="First name"
-                validation="required|length:1,30"
-              ></FormKit>
-            </div>
-            <div class="col-12 col-md-6">
-              <FormKit type="text" name="last_name" outer-class="mb-3" label="Last name" validation="length:0,30">
-              </FormKit>
-            </div>
+        <div v-if="profileIsLoading" class="text-center mt-4">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
           </div>
-
-          <div class="row">
-            <div class="col-12 col-md-6">
-              <FormKit type="date" label="Birthday" outer-class="mb-3" name="birthday" validation-visibility="live" />
+          <div class="mt-3">Applying changes...</div>
+        </div>
+        <div v-else>
+          <FormKit v-if="userData !== null" type="form" submit-label="Save" :value="userData" @submit="saveUserProfile">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <FormKit
+                  type="text"
+                  name="first_name"
+                  outer-class="mb-3"
+                  label="First name"
+                  validation="required|length:1,30"
+                ></FormKit>
+              </div>
+              <div class="col-12 col-md-6">
+                <FormKit type="text" name="last_name" outer-class="mb-3" label="Last name" validation="length:0,30">
+                </FormKit>
+              </div>
             </div>
 
-            <div class="col-12 col-md-6">
-              <FormKit
-                type="text"
-                label="Place of study"
-                name="education"
-                validation-visibility="live"
-                help="e.g. ITMO University, Software Engineering BSc, I course"
-                outer-class="mb-3"
-              />
-            </div>
-          </div>
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <FormKit type="date" label="Birthday" outer-class="mb-3" name="birthday" validation-visibility="live" />
+              </div>
 
-          <MarkDownEditor label="Profile description" name="bio" :options="{}" ref="bioInput" />
-        </FormKit>
+              <div class="col-12 col-md-6">
+                <FormKit
+                  type="text"
+                  label="Place of study"
+                  name="education"
+                  validation-visibility="live"
+                  help="e.g. ITMO University, Software Engineering BSc, I course"
+                  outer-class="mb-3"
+                />
+              </div>
+            </div>
+
+            <MarkDownEditor
+              label="Profile description"
+              name="bio"
+              :options="{initialValue: userData.bio}"
+              ref="bioInput"
+            />
+          </FormKit>
+        </div>
       </div>
     </div>
   </div>

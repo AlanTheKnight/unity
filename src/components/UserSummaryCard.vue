@@ -5,14 +5,20 @@ import UserIcon from './UserIcon.vue'
 
 const authStore = useAuthStore()
 
-defineProps<{ member: Member }>()
+const props = defineProps<{ member: Member; onClickCallback?: (member: Member) => void }>()
+
+const cardClicked = () => {
+  if (props.onClickCallback) props.onClickCallback(props.member)
+}
 </script>
 
 <template>
   <div class="col-12 col-xl-6 mb-3">
-    <div class="card card-body h-100">
+    <div class="card card-body h-100" @click="cardClicked" data-bs-toggle="modal" data-bs-target="#userModalElement">
       <div class="row h-100">
-        <div class="col-12 col-md-auto mb-4 mb-md-0 d-flex justify-content-center justify-content-md-start align-items-center">
+        <div
+          class="col-12 col-md-auto mb-4 mb-md-0 d-flex justify-content-center justify-content-md-start align-items-center"
+        >
           <UserIcon :user="member" size="100px" />
         </div>
         <div class="col">

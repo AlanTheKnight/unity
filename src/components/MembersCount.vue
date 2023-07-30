@@ -36,8 +36,7 @@ onMounted(async () => {
 .skeleton-box {
   cursor: progress;
   background: linear-gradient(0.25turn, transparent, #00dfb3, transparent), linear-gradient(#01c29a, #01c29a),
-    radial-gradient(38px circle at 19px 19px, #01c29a 50%, transparent 51%),
-    linear-gradient(#01c29a, #01c29a);
+    radial-gradient(38px circle at 19px 19px, #01c29a 50%, transparent 51%), linear-gradient(#01c29a, #01c29a);
   background-repeat: no-repeat;
   background-size: 315px 250px, 315px 180px, 100px 100px, 225px 30px;
   background-position: -315px 0, 0 0, 0px 190px, 50px 195px;
