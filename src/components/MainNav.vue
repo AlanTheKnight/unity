@@ -21,7 +21,7 @@ const authStore = useAuthStore()
         <div class="dropdown">
           <div data-bs-toggle="dropdown" class="d-flex flex-row align-items-center">
             <div class="me-2 fw-bold">{{ authStore.user.username }}</div>
-            <UserIcon :user="authStore.user" size="40px" />
+            <UserIcon :user="authStore.user" />
           </div>
 
           <ul class="dropdown-menu">
@@ -55,6 +55,8 @@ const authStore = useAuthStore()
 }
 
 .userAvatar {
-  border-radius: 20%;
+  border-radius: 0.375rem;
+  width: 40px;
+  height: 40px;
 }
 </style>

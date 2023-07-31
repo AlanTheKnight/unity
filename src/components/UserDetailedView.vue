@@ -14,7 +14,7 @@ defineProps<{ member: Member | null }>()
           <div class="card w-100">
             <div class="card-img-top" id="profileBackground">
               <div>
-                <UserIcon :user="member" size="5rem" />
+                <UserIcon :user="member" />
               </div>
               <button
                 type="button"
@@ -71,10 +71,13 @@ defineProps<{ member: Member | null }>()
 }
 
 .userAvatar {
-  border-radius: 20%;
   margin-top: calc(8rem - 1.5rem);
   margin-left: 1.5rem;
   position: absolute;
+
+  border-radius: 0.375rem;
+  width: 4.5rem;
+  height: 4.5rem;
 }
 
 #detailsSection {

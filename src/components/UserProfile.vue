@@ -47,7 +47,7 @@ const saveUserProfile = (data: UserProfileFormData) => {
   <div class="card w-100" v-if="authStore.user && user">
     <div class="card-img-top" id="profileBackground">
       <div>
-        <UserIcon :user="user" size="5rem" />
+        <UserIcon :user="user" />
       </div>
     </div>
     <div class="card-body px-0">
@@ -107,7 +107,7 @@ const saveUserProfile = (data: UserProfileFormData) => {
             <MarkDownEditor
               label="Profile description"
               name="bio"
-              :options="{initialValue: userData.bio}"
+              :options="{ initialValue: userData.bio }"
               ref="bioInput"
             />
           </FormKit>
@@ -126,10 +126,12 @@ const saveUserProfile = (data: UserProfileFormData) => {
 }
 
 .userAvatar {
-  border-radius: 20%;
   margin-top: calc(8rem - 1.5rem);
   margin-left: 1.5rem;
   position: absolute;
+  border-radius: 0.375rem;
+  width:  4.5rem;
+  height: 4.5rem;
 }
 
 #detailsSection {

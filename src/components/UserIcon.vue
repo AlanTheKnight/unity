@@ -4,11 +4,11 @@ import type { TelegramUserData } from '@/stores/auth'
 import { toSvg } from 'jdenticon'
 import { computed } from 'vue'
 
-const props = defineProps<{ size: string; user: Member | TelegramUserData }>()
+const props = defineProps<{ user: Member | TelegramUserData }>()
 
 const jdenticon = computed(() => {
   if (props.user.photo_url) return null
-  return toSvg(props.user.id, parseInt(props.size))
+  return toSvg(props.user.id, 128).replace('width="128"', 'width="100%"').replace('height="128"', 'height="100%"')
 })
 </script>
 
@@ -18,7 +18,6 @@ const jdenticon = computed(() => {
     :src="user.photo_url"
     alt=""
     class="userAvatar"
-    :style="{ width: `${size}`, height: `${size}` }"
   />
   <div v-else v-html="jdenticon" class="userAvatar jdenticon-wrapper"></div>
 </template>
