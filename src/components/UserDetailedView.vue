@@ -24,7 +24,7 @@ defineProps<{ member: Member | null }>()
               ></button>
             </div>
             <div class="card-body px-0">
-              <div class="fs-3 username fw-bold">{{ member.username }}</div>
+              <div class="fs-3 username fw-bold">{{ member.first_name }} {{ member.last_name }}</div>
 
               <div id="detailsSection" class="pe-4">
                 <div v-if="member.isAdmin" class="mt-2 mb-3">
@@ -74,10 +74,9 @@ defineProps<{ member: Member | null }>()
   margin-top: calc(8rem - 1.5rem);
   margin-left: 1.5rem;
   position: absolute;
-
   border-radius: 0.375rem;
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 #detailsSection {

@@ -130,8 +130,8 @@ const saveUserProfile = (data: UserProfileFormData) => {
   margin-left: 1.5rem;
   position: absolute;
   border-radius: 0.375rem;
-  width:  4.5rem;
-  height: 4.5rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 #detailsSection {
